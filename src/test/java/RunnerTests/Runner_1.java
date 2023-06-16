@@ -5,7 +5,7 @@ import io.cucumber.testng.CucumberOptions;
 
 public class Runner_1 {
 	@CucumberOptions(
-			features={"src\\test\\resources\\Features\\GetItem_1.feature"},
+			features={"src\\test\\resources\\Features"},
 			glue={"StepDef_Class"},
 			//tags="@smoketest",
 			monochrome=true,

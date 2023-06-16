@@ -3,6 +3,7 @@ package StepDef_Class;
 import java.io.IOException;
 
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.testng.Reporter;
 
 import Page_Class.GetItemPageClass;
 import Utilities.PropertiesUtil;
@@ -22,7 +23,7 @@ public class GetProductStepDef  {
 	@Given("I am on the Amazon website")
 	public void openAmazonWebsite() throws IOException {
 	    sh.driver = sh.webUtil.openBrowser("chrome");
-	    sh.webUtil.launchSite(PropertiesUtil.getProperty("url"), sh.driver);
+	    sh.webUtil.launchSite(sh.driver, PropertiesUtil.getProperty("url"));
 	}
 
 	@When("I search for {string}")
@@ -39,13 +40,13 @@ public class GetProductStepDef  {
 	@When("I select the first product from the list")
 	public void selectTheFirstProduct() throws IOException, InterruptedException {
 		sh.pageClass.clickOnProduct();
-		Thread.sleep(5000);
+
 	}
 
 	@Then("I should see the product details")
 	public void seeTheProductDetails() throws IOException {
 		String details=sh.pageClass.getProductDetails();
-		System.out.println(details);
+		sh.sc.log("-> The mobile name is:  "+details);
 	}
 	@And("close the all browser")
 	public void closeTheCurrentBrowser() {
